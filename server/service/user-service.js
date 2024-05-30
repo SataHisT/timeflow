@@ -30,16 +30,12 @@ class UserService {
     }
   }
   async activate(activationLink) {
-    try {
-      const user = await UserModel.findOne({ activationLink })
-      if (!user) {
-        throw ApiError.badRequest('Ссылка активации не действительная')
-      }
-      user.isActivated = true
-      await user.save()
-    } catch (error) {
-      console.error('Activation error:', error)
+    const user = await UserModel.findOne({ activationLink })
+    if (!user) {
+      throw ApiError.badRequest('Ссылка активации не действительная')
     }
+    user.isActivated = true
+    await user.save()
   }
 }
 
