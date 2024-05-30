@@ -3,9 +3,9 @@ module.exports = class ApiError extends Error {
   errors
 
   constructor(status, message, errors = []) {
-    super(massage)
+    super(message)
     this.status = status
-    this.errors
+    this.errors = errors
   }
 
   static unauthorizedError() {
