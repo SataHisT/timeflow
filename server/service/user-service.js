@@ -80,6 +80,11 @@ class UserService {
       user: userDto,
     }
   }
+
+  async getAllUsers() {
+    const users = await UserModel.findOne()
+    return users
+  }
 }
 
 module.exports = new UserService()
